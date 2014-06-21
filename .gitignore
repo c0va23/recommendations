@@ -16,4 +16,5 @@
 /tmp
 
 /.rspec
+/.env
 

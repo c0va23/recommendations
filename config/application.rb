@@ -23,5 +23,11 @@ module Recommendations
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    config.middleware.use OmniAuth::Builder do
+      secrets = Rails.application.secrets
+      provider :facebook, secrets.facebook_key, secrets.facebook_secret, scope: ''
+    end
+
   end
 end
