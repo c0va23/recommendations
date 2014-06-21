@@ -21,7 +21,7 @@ module Recommendations
     # config.i18n.default_locale = :de
 
     config.generators do |g|
-      g.test_framework false
+      g.test_framework :rspec
     end
   end
 end

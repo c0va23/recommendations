@@ -27,6 +27,14 @@ gem 'slim-rails'
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 
+group :test do
+  gem 'rspec-rails', '~> 2.14.0'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
