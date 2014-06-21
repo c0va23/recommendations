@@ -27,7 +27,9 @@ gem 'slim-rails'
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 
+# Auth
 gem 'omniauth-facebook'
+gem 'cancancan'
 
 gem 'dotenv-rails'
 
