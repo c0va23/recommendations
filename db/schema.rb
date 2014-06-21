@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621114653) do
+ActiveRecord::Schema.define(version: 20140621131019) do
+
+  create_table "tags", force: true do |t|
+    t.string   "value",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["value"], name: "index_tags_on_value", unique: true
 
   create_table "things", force: true do |t|
     t.string   "name",       null: false
