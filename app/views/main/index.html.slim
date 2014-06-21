@@ -6,4 +6,10 @@ html ng-app="RecommendationsApplication"
     = javascript_include_tag 'main/application'
     = csrf_meta_tags
   body
+    nav.navbar.navbar-default
+      .container
+        ul.nav.navbar-nav.navbar-right
+          li.navbar-text = current_user.name
+          li.navbar-form = button_to user_session_path, method: :delete, class: 'btn btn-danger'
+            = t('.sign_out')
     div ng-view=true
