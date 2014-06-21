@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621132112) do
+ActiveRecord::Schema.define(version: 20140621133944) do
 
   create_table "tag_of_things", force: true do |t|
     t.integer  "tag_id",     null: false
@@ -39,5 +39,12 @@ ActiveRecord::Schema.define(version: 20140621132112) do
   end
 
   add_index "things", ["name"], name: "index_things_on_name", unique: true
+
+  create_table "users", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "facebook_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
