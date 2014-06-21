@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621133944) do
+ActiveRecord::Schema.define(version: 20140621161442) do
 
   create_table "tag_of_things", force: true do |t|
     t.integer  "tag_id",     null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140621133944) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "approved"
   end
 
   add_index "things", ["name"], name: "index_things_on_name", unique: true
