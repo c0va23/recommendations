@@ -4,4 +4,9 @@ class Api::ThingsController < Api::BaseController
   def index
     respond_with @things
   end
+
+  def show
+    respond_with @thing
+  end
+
 end

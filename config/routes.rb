@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :user_session, only: %w[ new destroy ]
 
   namespace :api do
-    resources :things, only: %w[ index ]
+    resources :things, only: %w[ index show ]
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
