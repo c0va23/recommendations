@@ -13,4 +13,15 @@ class Api::ThingsController < Api::BaseController
     respond_with @thing
   end
 
+  def create
+    @thing = Thing.create(thing_params)
+    respond_with @thing, location: [ :api, @thing ]
+  end
+
+protected
+
+  def thing_params
+    params.require(:thing).permit(:name)
+  end
+
 end

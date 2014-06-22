@@ -35,3 +35,13 @@ controllers.controller 'ScoreWidgetController',
         $scope.score.value = newValue
         $scope.score.$update(thingId: $scope.thingId)
   ]
+
+controllers.controller 'NewThingsController',
+  [ '$scope', 'Thing', ($scope, Thing) ->
+    errorCallback = (respond) -> $scope.errors_data = respond.data.errors
+    $scope.save = -> 
+      Thing.save $scope.thing, $scope.reset, errorCallback
+    $scope.reset = (event) -> 
+      $scope.thing = new Thing()
+      $scope.errors_data = null
+  ]

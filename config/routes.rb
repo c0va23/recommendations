@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :user_session, only: %w[ new destroy ]
 
   namespace :api do
-    resources :things, only: %w[ index show ] do
+    resources :things, only: %w[ index show create ] do
       resource :score, only: %w[ show update ]
     end
   end

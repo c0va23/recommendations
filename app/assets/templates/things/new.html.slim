@@ -1,0 +1,16 @@
+h1 New thing
+
+form.form ng-submit="save()"
+  ul.alert.alert-danger ng-repeat="(field, errors) in errors_data"
+    li ng-repeat="error in errors"
+      strong 
+        | {{field}}
+      |  {{error}}
+
+  .form-group
+    label for="thing_name" Name
+    input.form-control id="thing_name" ng-model="thing.name"
+
+  .form-group
+    button.btn.btn-primary type="submit" Save
+    button.btn.btn-default type="reset" ng-click="reset()" Reset

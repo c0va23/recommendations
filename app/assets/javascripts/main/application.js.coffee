@@ -18,6 +18,7 @@ app.config ['$routeProvider', ($routeProvider) ->
     .when '/things/recommended', controller: 'RecommendedThingsController', templateUrl: '/assets/things/recommended.html'
     .when '/things/unchecked', controller: 'UncheckedThingsController', templateUrl: '/assets/things/unchecked.html'
     .when '/things/checked', controller: 'CheckedThingsController', templateUrl: '/assets/things/checked.html'
+    .when '/things/new', controller: 'NewThingsController', templateUrl: '/assets/things/new.html'
     .when '/things/:thingId', controller: 'ThingController', templateUrl: '/assets/things/show.html'
     .when '/scores', controller: 'ScoresController', templateUrl: '/assets/scores/index.html'
     .when '/scores/:scopeId', controller: 'ScoreController', templateUrl: '/assets/scores/show.html'
