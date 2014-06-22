@@ -7,3 +7,7 @@ resources.factory 'Thing', [ '$resource', ($resource) ->
 resources.factory 'Score', [ '$resource', ($resource) ->
   $resource('/api/things/:thingId/score.json', {}, { update: { method: 'PATCH' } })
 ]
+
+resources.factory 'Comment', [ '$resource', ($resource) ->
+  $resource('/api/things/:thingId/comments.json')
+]

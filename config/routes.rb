@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :things, only: %w[ index show create ] do
       resource :score, only: %w[ show update ]
+      resources :comments, only: %w[ index show create ]
     end
   end
 

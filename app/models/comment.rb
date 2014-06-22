@@ -5,4 +5,6 @@ class Comment < ActiveRecord::Base
   validates :message, presence: true
   validates :user, presence: true
   validates :thing, presence: true
+
+  delegate :name, to: :user, prefix: true
 end

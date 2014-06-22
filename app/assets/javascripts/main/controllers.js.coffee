@@ -45,3 +45,14 @@ controllers.controller 'NewThingsController',
       $scope.thing = new Thing()
       $scope.errors_data = null
   ]
+
+controllers.controller 'CommentsController',
+  [ '$scope', 'Comment', ($scope, Comment) ->
+    queryParams = thingId: $scope.thingId
+    init = -> 
+      $scope.comments = Comment.query(queryParams)
+      $scope.newComment = new Comment()
+    $scope.saveNewComment = ->
+      Comment.save queryParams, $scope.newComment, init
+    init()
+  ]
