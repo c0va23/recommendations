@@ -33,6 +33,9 @@ gem 'cancancan'
 
 gem 'dotenv-rails'
 
+# Admin
+gem 'rails_admin'
+
 group :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'guard-rspec'
