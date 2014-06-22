@@ -14,3 +14,8 @@ controllers.controller 'ScoresController',
   [ '$scope', 'Score', ($scope, Score) ->
     $scope.scores = Score.query()
   ]
+
+controllers.controller 'ScoreController',
+  [ '$scope', 'Score', '$routeParams', ($scope, Score, $routeParams) ->
+    $scope.score = Score.get(scoreId: $routeParams.scopeId)
+  ]

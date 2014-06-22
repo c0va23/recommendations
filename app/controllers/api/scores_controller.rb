@@ -6,4 +6,8 @@ class Api::ScoresController < Api::BaseController
     respond_with @scores
   end
 
+  def show
+    respond_with @score
+  end
+
 end
