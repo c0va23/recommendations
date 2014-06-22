@@ -15,7 +15,8 @@ app = angular.module 'RecommendationsApplication', [
 app.config ['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/things', controller: 'ThingsController', templateUrl: '/assets/things/index.html'
-    .when '/things/recommendations', controller: 'ThingRecommendationsController', templateUrl: '/assets/things/recommendations.html'
+    .when '/things/recommended', controller: 'RecommendedThingsController', templateUrl: '/assets/things/recommended.html'
+    .when '/things/unchecked', controller: 'UncheckedThingsController', templateUrl: '/assets/things/unchecked.html'
     .when '/things/:thingId', controller: 'ThingController', templateUrl: '/assets/things/show.html'
     .when '/scores', controller: 'ScoresController', templateUrl: '/assets/scores/index.html'
     .when '/scores/:scopeId', controller: 'ScoreController', templateUrl: '/assets/scores/show.html'

@@ -10,7 +10,8 @@ html ng-app="RecommendationsApplication"
       .container
         ul.nav.navbar-nav
           li: a href="#/things" Things
-          li: a href="#/things/recommendations" Recommendations
+          li: a href="#/things/recommended" Recommendations
+          li: a href="#/things/unchecked" Unchecked
         ul.nav.navbar-nav.navbar-right
           - if current_user
             li.navbar-text = current_user.name

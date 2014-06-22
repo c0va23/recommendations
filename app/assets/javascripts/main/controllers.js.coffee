@@ -5,9 +5,14 @@ controllers.controller 'ThingsController',
     $scope.things = Thing.query()
   ]
 
-controllers.controller 'ThingRecommendationsController', 
+controllers.controller 'RecommendedThingsController', 
   [ '$scope', 'Thing', ($scope, Thing) ->
     $scope.things = Thing.query(recommendations: true)
+  ]
+
+controllers.controller 'UncheckedThingsController', 
+  [ '$scope', 'Thing', ($scope, Thing) ->
+    $scope.things = Thing.query(unchecked: true)
   ]
 
 controllers.controller 'ThingController', 
