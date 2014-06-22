@@ -10,4 +10,6 @@ describe Thing do
 
   it { should have_many(:tag_of_things).dependent(:destroy) }
   it { should have_many(:tags).through(:tag_of_things) }
+  it { should have_many(:scores).dependent(:destroy) }
+  it { should have_many(:users).through(:scores) }
 end

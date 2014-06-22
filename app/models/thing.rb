@@ -3,4 +3,6 @@ class Thing < ActiveRecord::Base
 
   has_many :tag_of_things, dependent: :destroy
   has_many :tags, through: :tag_of_things
+  has_many :scores, dependent: :destroy
+  has_many :users, through: :scores
 end
