@@ -9,6 +9,7 @@ class AdminAbility
       can :manage, Thing
       can :manage, Tag
       can :manage, User
+      can :manage, Score
       cannot :destroy, User
     end
   end
