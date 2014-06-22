@@ -5,6 +5,7 @@ class Thing < ActiveRecord::Base
   has_many :tags, through: :tag_of_things
   has_many :scores, dependent: :destroy
   has_many :users, through: :scores
+  has_many :comments, dependent: :destroy
 
   def self.unchecked_for(user)
     self.where.not(id: user.things.select('things.id'))

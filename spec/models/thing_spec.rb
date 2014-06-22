@@ -12,6 +12,7 @@ describe Thing do
   it { should have_many(:tags).through(:tag_of_things) }
   it { should have_many(:scores).dependent(:destroy) }
   it { should have_many(:users).through(:scores) }
+  it { should have_many(:comments).dependent(:destroy) }
 
   describe 'scope :recommendations_for' do
     let!(:user) { create(:user) }
