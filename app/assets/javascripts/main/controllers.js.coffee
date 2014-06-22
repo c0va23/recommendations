@@ -1,9 +1,11 @@
 controllers = angular.module('RecommendationsControllers', []) 
 
-controllers.controller 'ThingsController', ($scope, $http) ->
-  $http.get('/api/things.json').success (data) ->
-    $scope.things = data
+controllers.controller 'ThingsController', 
+  [ '$scope', 'Thing', ($scope, Thing) ->
+    $scope.things = Thing.query()
+  ]
 
-controllers.controller 'ThingController', ($scope, $http, $routeParams) ->
-  $http.get("/api/things/#{$routeParams.thingId}.json").success (data) ->
-    $scope.thing = data
+controllers.controller 'ThingController', 
+  [ '$scope','$routeParams', 'Thing', ($scope, $routeParams, Thing) ->
+    $scope.thing = Thing.get(thingId: $routeParams.thingId)
+  ]

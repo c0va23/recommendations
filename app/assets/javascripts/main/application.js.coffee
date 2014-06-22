@@ -1,9 +1,10 @@
 #= require angular
 #= require angular-route
+#= require angular-resource
 #= require_tree .
 #= require_self
 
-app = angular.module('RecommendationsApplication', ['ngRoute', 'RecommendationsControllers'])
+app = angular.module('RecommendationsApplication', ['ngRoute', 'RecommendationsControllers', 'RecommendationsResources'])
 
 app.config ['$routeProvider', ($routeProvider) ->
   $routeProvider
