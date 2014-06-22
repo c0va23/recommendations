@@ -42,16 +42,29 @@ describe Thing do
     it { should_not include(bad_thing2) }
   end
 
-  describe 'scope :not_scored_for' do
+  describe 'scope :unchecked_for' do
     let!(:user) { create(:user) }
     let!(:scored_thing) { create(:thing) }
     let!(:other_thing) { create(:thing) }
 
     before { Score.create(user: user, thing: scored_thing, value: 1) }
 
-    subject { Thing.not_scored_for(user) }
+    subject { Thing.unchecked_for(user) }
 
     it { should include(other_thing) }
     it { should_not include(scored_thing) }
+  end
+
+  describe 'scope :checked_for' do
+    let!(:user) { create(:user) }
+    let!(:scored_thing) { create(:thing) }
+    let!(:other_thing) { create(:thing) }
+
+    before { Score.create(user: user, thing: scored_thing, value: 1) }
+
+    subject { Thing.checked_for(user) }
+
+    it { should_not include(other_thing) }
+    it { should include(scored_thing) }
   end
 end

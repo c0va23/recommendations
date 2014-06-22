@@ -3,7 +3,8 @@ class Api::ThingsController < Api::BaseController
 
   def index
     @things = @things.recommendations_for(current_user) if params[:recommendations]
-    @things = @things.not_scored_for(current_user) if params[:unchecked]
+    @things = @things.unchecked_for(current_user) if params[:unchecked]
+    @things = @things.checked_for(current_user) if params[:checked]
     @things.preload!(:tags)
     respond_with @things
   end

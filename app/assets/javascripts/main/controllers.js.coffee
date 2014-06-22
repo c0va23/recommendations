@@ -15,6 +15,11 @@ controllers.controller 'UncheckedThingsController',
     $scope.things = Thing.query(unchecked: true)
   ]
 
+controllers.controller 'CheckedThingsController', 
+  [ '$scope', 'Thing', ($scope, Thing) ->
+    $scope.things = Thing.query(checked: true)
+  ]
+
 controllers.controller 'ThingController', 
   [ '$scope','$routeParams', 'Thing', ($scope, $routeParams, Thing) ->
     $scope.thingId = $routeParams.thingId
