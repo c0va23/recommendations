@@ -3,4 +3,10 @@
 #= require_tree .
 #= require_self
 
-app = angular.module('RecommendationsApplication', [])
+app = angular.module('RecommendationsApplication', ['ngRoute', 'RecommendationsControllers'])
+
+app.config ['$routeProvider', ($routeProvider) ->
+  $routeProvider
+    .when '/things', controller: 'ThingsController', templateUrl: '/assets/things/index.html'
+    .otherwise redirectTo: '/things'
+]

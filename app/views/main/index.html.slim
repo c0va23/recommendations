@@ -8,8 +8,14 @@ html ng-app="RecommendationsApplication"
   body
     nav.navbar.navbar-default
       .container
+        ul.nav.navbar-nav
+          li: a href="#/things" Things
         ul.nav.navbar-nav.navbar-right
-          li.navbar-text = current_user.name
-          li.navbar-form = button_to user_session_path, method: :delete, class: 'btn btn-danger'
-            = t('.sign_out')
-    div ng-view=true
+          - if current_user
+            li.navbar-text = current_user.name
+            - if current_user.admin?
+              li = link_to t('.amdin_panel'), rails_admin_path
+            li.navbar-form = button_to user_session_path, method: :delete, class: 'btn btn-danger'
+              = t('.sign_out')
+    .container
+      div ng-view=true
