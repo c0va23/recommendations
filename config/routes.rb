@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   resource :user_session, only: %w[ new destroy ]
 
   namespace :api do
-    resources :things, only: %w[ index show ]
-    resources :scores, only: %w[ index show update ]
+    resources :things, only: %w[ index show ] do
+      resource :score, only: %w[ show update ]
+    end
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

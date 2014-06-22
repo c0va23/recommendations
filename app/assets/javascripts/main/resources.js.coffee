@@ -5,5 +5,5 @@ resources.factory 'Thing', [ '$resource', ($resource) ->
 ]
 
 resources.factory 'Score', [ '$resource', ($resource) ->
-  $resource('/api/scores/:scoreId.json', {}, { update: { method: 'PATCH' } })
+  $resource('/api/things/:thingId/score.json', {}, { update: { method: 'PATCH' } })
 ]

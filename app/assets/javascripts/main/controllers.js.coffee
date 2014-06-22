@@ -7,23 +7,16 @@ controllers.controller 'ThingsController',
 
 controllers.controller 'ThingController', 
   [ '$scope','$routeParams', 'Thing', ($scope, $routeParams, Thing) ->
-    $scope.thing = Thing.get(thingId: $routeParams.thingId)
-  ]
-
-controllers.controller 'ScoresController',
-  [ '$scope', 'Score', ($scope, Score) ->
-    $scope.scores = Score.query()
-  ]
-
-controllers.controller 'ScoreController',
-  [ '$scope', 'Score', '$routeParams', ($scope, Score, $routeParams) ->
-    $scope.score = Score.get(scoreId: $routeParams.scopeId)
+    $scope.thingId = $routeParams.thingId
+    $scope.thing = Thing.get(thingId: $scope.thingId)
   ]
 
 controllers.controller 'ScoreWidgetController',
   [ '$scope', 'Score', ($scope, Score) ->
-    score = $scope.score
+    $scope.score = Score.get(thingId: $scope.thingId)
+
     $scope.setValue = (newValue) ->
-      score.value = newValue
-      score.$update(scoreId: score.id)
+      if newValue != $scope.score.value
+        $scope.score.value = newValue
+        $scope.score.$update(thingId: $scope.thingId)
   ]
