@@ -1,0 +1,13 @@
+article ng-controller="ScoreWidgetController"
+  h2 Scope for thing "{{score.thing.name}}"
+  p 
+    | {{ score.value | scoreValueFormat }}
+
+  p
+    button class="btn btn-success" ng-click="setValue(1)"
+      span.glyphicon.glyphicon-thumbs-up
+      |  Like
+
+    button class="btn btn-danger" ng-click="setValue(-1)"
+      span.glyphicon.glyphicon-thumbs-down
+      |  Dislike

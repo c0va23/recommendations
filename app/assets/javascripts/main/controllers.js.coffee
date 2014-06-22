@@ -19,3 +19,11 @@ controllers.controller 'ScoreController',
   [ '$scope', 'Score', '$routeParams', ($scope, Score, $routeParams) ->
     $scope.score = Score.get(scoreId: $routeParams.scopeId)
   ]
+
+controllers.controller 'ScoreWidgetController',
+  [ '$scope', 'Score', ($scope, Score) ->
+    score = $scope.score
+    $scope.setValue = (newValue) ->
+      score.value = newValue
+      score.$update(scoreId: score.id)
+  ]

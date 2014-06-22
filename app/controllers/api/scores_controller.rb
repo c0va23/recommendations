@@ -10,4 +10,15 @@ class Api::ScoresController < Api::BaseController
     respond_with @score
   end
 
+  def update
+    @score.update_attributes(score_params)
+    respond_with @score
+  end
+
+protected
+
+  def score_params
+    params[:score].permit(:value)
+  end
+
 end

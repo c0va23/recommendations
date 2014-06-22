@@ -1,6 +1,6 @@
 filters = angular.module('RecommendationsFilters', [])
 
-filters.filter 'scopeValueFormat', ->
+filters.filter 'scoreValueFormat', ->
   (value) =>
     if value > 0
       'Like'

@@ -9,6 +9,7 @@ app = angular.module 'RecommendationsApplication', [
   'RecommendationsControllers',
   'RecommendationsResources',
   'RecommendationsFilters',
+  'RecommendationsDirectives',
 ]
 
 app.config ['$routeProvider', ($routeProvider) ->
@@ -18,4 +19,9 @@ app.config ['$routeProvider', ($routeProvider) ->
     .when '/scores', controller: 'ScoresController', templateUrl: '/assets/scores/index.html'
     .when '/scores/:scopeId', controller: 'ScoreController', templateUrl: '/assets/scores/show.html'
     .otherwise redirectTo: '/things'
+]
+
+app.run [ '$http', ($http) -> 
+  token = document.querySelector('meta[name=csrf-token]').content
+  $http.defaults.headers.common['X-Csrf-Token'] = token
 ]
