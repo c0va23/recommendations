@@ -1,0 +1,14 @@
+h1  Things recommendations
+
+table.table
+  thead
+    tr
+      th Name
+      th Tags
+  tbody
+    tr ng-repeat="thing in things"
+      td
+        a href="#/things/{{thing.id}}" {{thing.name}}
+      td
+        ul.list-inline
+          li ng-repeat="tag in thing.tags" {{tag}}

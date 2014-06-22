@@ -5,6 +5,11 @@ controllers.controller 'ThingsController',
     $scope.things = Thing.query()
   ]
 
+controllers.controller 'ThingRecommendationsController', 
+  [ '$scope', 'Thing', ($scope, Thing) ->
+    $scope.things = Thing.query(recommendations: true)
+  ]
+
 controllers.controller 'ThingController', 
   [ '$scope','$routeParams', 'Thing', ($scope, $routeParams, Thing) ->
     $scope.thingId = $routeParams.thingId
