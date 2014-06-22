@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621161442) do
+ActiveRecord::Schema.define(version: 20140622074357) do
+
+  create_table "scores", force: true do |t|
+    t.integer  "thing_id",   null: false
+    t.integer  "user_id",    null: false
+    t.integer  "value",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["thing_id", "user_id"], name: "index_scores_on_thing_id_and_user_id", unique: true
+  add_index "scores", ["thing_id"], name: "index_scores_on_thing_id"
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id"
 
   create_table "tag_of_things", force: true do |t|
     t.integer  "tag_id",     null: false
