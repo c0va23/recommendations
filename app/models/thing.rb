@@ -12,7 +12,7 @@ class Thing < ActiveRecord::Base
 
   def self.recommendations_for(user)
     tag_ids = Tag.recommendations_for(user).select('tags.id')
-    self.not_scored_for(user).joins(:tags).where(tags: { id: tag_ids})
+    self.not_scored_for(user).joins(:tags).where(tags: { id: tag_ids}).uniq
   end
 
 end

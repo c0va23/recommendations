@@ -3,7 +3,7 @@ class Api::ThingsController < Api::BaseController
 
   def index
     @things = @things.recommendations_for(current_user) if params[:recommendations]
-    @things.includes!(:tags)
+    @things.preload!(:tags)
     respond_with @things
   end
 

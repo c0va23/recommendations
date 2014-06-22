@@ -19,13 +19,15 @@ describe Thing do
     let!(:tag1) { create(:tag) }
     let!(:tag2) { create(:tag) }
     let!(:tag3) { create(:tag) }
+    let!(:tag4) { create(:tag) }
 
     let!(:scored_thing1) { create(:thing, tags: [ tag1, tag2 ]) }
     let!(:scored_thing2) { create(:thing, tags: [ tag2, tag3 ]) }
 
     let!(:good_thing1) { create(:thing, tags: [ tag1 ]) }
     let!(:good_thing2) { create(:thing, tags: [ tag2 ]) }
-    let!(:bad_thing) { create(:thing, tags: [ tag3 ]) }
+    let!(:bad_thing1) { create(:thing, tags: [ tag3 ]) }
+    let!(:bad_thing2) { create(:thing, tags: [ tag3 ]) }
 
     before do
       Score.create!(user: user, thing: scored_thing1, value: 1)
@@ -36,7 +38,8 @@ describe Thing do
 
     it { should include(good_thing1) }
     it { should include(good_thing2) }
-    it { should_not include(bad_thing) }
+    it { should_not include(bad_thing1) }
+    it { should_not include(bad_thing2) }
   end
 
   describe 'scope :not_scored_for' do
