@@ -10,5 +10,6 @@ app.config ['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when '/things', controller: 'ThingsController', templateUrl: '/assets/things/index.html'
     .when '/things/:thingId', controller: 'ThingController', templateUrl: '/assets/things/show.html'
+    .when '/scores', controller: 'ScoresController', templateUrl: '/assets/scores/index.html'
     .otherwise redirectTo: '/things'
 ]

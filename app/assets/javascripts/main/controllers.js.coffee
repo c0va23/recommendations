@@ -9,3 +9,8 @@ controllers.controller 'ThingController',
   [ '$scope','$routeParams', 'Thing', ($scope, $routeParams, Thing) ->
     $scope.thing = Thing.get(thingId: $routeParams.thingId)
   ]
+
+controllers.controller 'ScoresController',
+  [ '$scope', 'Score', ($scope, Score) ->
+    $scope.scores = Score.query()
+  ]

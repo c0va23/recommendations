@@ -10,6 +10,7 @@ html ng-app="RecommendationsApplication"
       .container
         ul.nav.navbar-nav
           li: a href="#/things" Things
+          li: a href="#/scores" My Scores
         ul.nav.navbar-nav.navbar-right
           - if current_user
             li.navbar-text = current_user.name

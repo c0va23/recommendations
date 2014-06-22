@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :things, only: %w[ index show ]
+    resources :scores, only: %w[ index ]
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
