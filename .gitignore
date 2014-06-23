@@ -18,3 +18,5 @@
 /.rspec
 /.env
 
+/public/assets
+

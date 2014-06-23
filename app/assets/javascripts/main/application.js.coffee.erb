@@ -1,0 +1,29 @@
+#= require angular
+#= require angular-route
+#= require angular-resource
+#= require_tree .
+#= require_self
+
+app = angular.module 'RecommendationsApplication', [
+  'ngRoute',
+  'RecommendationsControllers',
+  'RecommendationsResources',
+  'RecommendationsFilters',
+  'RecommendationsDirectives',
+]
+
+app.config ['$routeProvider', ($routeProvider) ->
+  $routeProvider
+    .when '/things', controller: 'ThingsController', templateUrl: '<%= asset_path 'things/index.html' %>'
+    .when '/things/recommended', controller: 'RecommendedThingsController', templateUrl: '<%= asset_path 'things/recommended.html' %>'
+    .when '/things/unchecked', controller: 'UncheckedThingsController', templateUrl: '<%= asset_path 'things/unchecked.html' %>'
+    .when '/things/checked', controller: 'CheckedThingsController', templateUrl: '<%= asset_path 'things/checked.html' %>'
+    .when '/things/new', controller: 'NewThingsController', templateUrl: '<%= asset_path 'things/new.html' %>'
+    .when '/things/:thingId', controller: 'ThingController', templateUrl: '<%= asset_path 'things/show.html' %>'
+    .otherwise redirectTo: '/things'
+]
+
+app.run [ '$http', ($http) -> 
+  token = document.querySelector('meta[name=csrf-token]').content
+  $http.defaults.headers.common['X-Csrf-Token'] = token
+]
