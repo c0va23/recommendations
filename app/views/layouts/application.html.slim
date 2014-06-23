@@ -4,6 +4,20 @@ html
     title Recommendations
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
+    = yield :head if content_for?(:head)
   body
-    .container
-      = yield
+    nav.navbar.navbar-default
+      .container 
+        .navbar-header
+          = link_to t('.home'), root_path, class: 'navbar-brand'
+        = yield :navbar if content_for?(:navbar)
+        ul.nav.navbar-nav.navbar-right
+          - if current_user
+            li.navbar-text = current_user.name
+            - if current_user.admin?
+              li = link_to t('.amdin_panel'), rails_admin_path
+            li.navbar-form = button_to user_session_path, method: :delete, class: 'btn btn-danger'
+              = t('.sign_out')
+          - else
+            li = link_to t('.sign_in'), new_user_session_path
+    .container= yield

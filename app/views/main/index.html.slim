@@ -1,26 +1,15 @@
-doctype html
-html ng-app="RecommendationsApplication"
-  head
-    title Recommendations
-    = stylesheet_link_tag 'main/application', media: 'all'
-    = javascript_include_tag 'main/application'
-    = csrf_meta_tags
-    script src="https://platform.twitter.com/widgets.js" async="true"
-  body
-    nav.navbar.navbar-default
-      .container
-        ul.nav.navbar-nav
-          li: a href="#/things" Things
-          li: a href="#/things/recommended" Recommendations
-          li: a href="#/things/unchecked" Unchecked
-          li: a href="#/things/checked" Checked
-          li: a href="#/things/new" New thing
-        ul.nav.navbar-nav.navbar-right
-          - if current_user
-            li.navbar-text = current_user.name
-            - if current_user.admin?
-              li = link_to t('.amdin_panel'), rails_admin_path
-            li.navbar-form = button_to user_session_path, method: :delete, class: 'btn btn-danger'
-              = t('.sign_out')
-    .container
-      div ng-view=true
+= content_for :head do
+  = stylesheet_link_tag 'main/application', media: 'all'
+  = javascript_include_tag 'main/application'
+  script src="https://platform.twitter.com/widgets.js" async="true"
+
+= content_for :navbar do
+  ul.nav.navbar-nav
+    li: a href="#/things" Things
+    li: a href="#/things/recommended" Recommendations
+    li: a href="#/things/unchecked" Unchecked
+    li: a href="#/things/checked" Checked
+    li: a href="#/things/new" New thing
+
+div ng-app="RecommendationsApplication"
+  div ng-view=true
