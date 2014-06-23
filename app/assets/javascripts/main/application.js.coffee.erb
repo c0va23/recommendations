@@ -12,7 +12,7 @@ app = angular.module 'RecommendationsApplication', [
   'RecommendationsDirectives',
 ]
 
-app.config ['$routeProvider', ($routeProvider) ->
+app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
   $routeProvider
     .when '/things', controller: 'ThingsController', templateUrl: '<%= asset_path 'things/index.html' %>'
     .when '/things/recommended', controller: 'RecommendedThingsController', templateUrl: '<%= asset_path 'things/recommended.html' %>'
@@ -21,6 +21,10 @@ app.config ['$routeProvider', ($routeProvider) ->
     .when '/things/new', controller: 'NewThingsController', templateUrl: '<%= asset_path 'things/new.html' %>'
     .when '/things/:thingId', controller: 'ThingController', templateUrl: '<%= asset_path 'things/show.html' %>'
     .otherwise redirectTo: '/things'
+
+  $locationProvider
+    .html5Mode true
+    .hashPrefix '!'
 ]
 
 app.run [ '$http', ($http) -> 
