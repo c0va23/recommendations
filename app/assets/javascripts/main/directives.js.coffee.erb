@@ -7,3 +7,11 @@ directives.directive 'wgScore', ->
 directives.directive 'wgComments', ->
   templateUrl: '<%= asset_path 'widgets/comments.html' %>'
   scope: { thingId: '=thingId' }
+
+directives.directive 'wgTwitterButton', ->
+  templateUrl: '<%= asset_path "widgets/twitter_button.html" %>'
+  scope: { label: '@' }
+  link: (scope, element, attrs) ->
+    scope.$watch 'label', (newValue, oldValue) ->
+      if window.twttr && newValue
+        window.twttr.widgets.load(document)
