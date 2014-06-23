@@ -12,22 +12,28 @@ app = angular.module 'RecommendationsApplication', [
   'RecommendationsDirectives',
 ]
 
+routePrefix = => $('base').attr('href')
+
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+
   $routeProvider
-    .when '/things', controller: 'ThingsController', templateUrl: '<%= asset_path 'things/index.html' %>'
-    .when '/things/recommended', controller: 'RecommendedThingsController', templateUrl: '<%= asset_path 'things/recommended.html' %>'
-    .when '/things/unchecked', controller: 'UncheckedThingsController', templateUrl: '<%= asset_path 'things/unchecked.html' %>'
-    .when '/things/checked', controller: 'CheckedThingsController', templateUrl: '<%= asset_path 'things/checked.html' %>'
-    .when '/things/new', controller: 'NewThingsController', templateUrl: '<%= asset_path 'things/new.html' %>'
-    .when '/things/:thingId', controller: 'ThingController', templateUrl: '<%= asset_path 'things/show.html' %>'
-    .otherwise redirectTo: '/things'
+    .when "#{routePrefix()}/things", controller: 'ThingsController', templateUrl: '<%= asset_path "things/index.html" %>'
+    .when "#{routePrefix()}/things/recommended", controller: 'RecommendedThingsController', templateUrl: '<%= asset_path "things/recommended.html" %>'
+    .when "#{routePrefix()}/things/unchecked", controller: 'UncheckedThingsController', templateUrl: '<%= asset_path "things/unchecked.html" %>'
+    .when "#{routePrefix()}/things/checked", controller: 'CheckedThingsController', templateUrl: '<%= asset_path "things/checked.html" %>'
+    .when "#{routePrefix()}/things/new", controller: 'NewThingsController', templateUrl: '<%= asset_path "things/new.html" %>'
+    .when "#{routePrefix()}/things/:thingId", controller: 'ThingController', templateUrl: '<%= asset_path "things/show.html" %>'
+    .otherwise redirectTo: "#{routePrefix()}/things"
 
   $locationProvider
     .html5Mode true
     .hashPrefix '!'
 ]
 
-app.run [ '$http', ($http) -> 
+app.run [ '$http', '$rootScope', ($http, $rootScope) -> 
+
   token = document.querySelector('meta[name=csrf-token]').content
   $http.defaults.headers.common['X-Csrf-Token'] = token
+
+  $rootScope.routePrefix = routePrefix()
 ]

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'main#index'
+  root to: redirect('/main')
 
   get '/auth/:provider/callback' => 'user_sessions#create'
   resource :user_session, only: %w[ new destroy ]
@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  get '/(*path)' => 'main#index', as: :main
+  get '/main/(*path)' => 'main#index', as: :main
 
 end

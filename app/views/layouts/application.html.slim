@@ -21,12 +21,12 @@ html ng-app=@ngApp
           ul.nav.navbar-nav.navbar-right
             - if current_user
               li.dropdown
-                a.dropdown-toggle data-toggle="dropdown" href="#"
+                a.dropdown-toggle.btn.btn-link data-toggle="dropdown"
                   = current_user.name
                   b.caret
                 ul.dropdown-menu
                   - if current_user.admin?
-                    li = link_to t('.amdin_panel'), rails_admin_path
+                    li = link_to t('.amdin_panel'), rails_admin_path, target: '_self'
                   li = link_to t('.sign_out'), user_session_path, method: :delete
             - else
               li = link_to t('.sign_in'), new_user_session_path

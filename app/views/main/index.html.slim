@@ -5,13 +5,14 @@
   = javascript_include_tag 'main/application'
   script src="https://platform.twitter.com/widgets.js" async="true"
   meta name="fragment" content="!"
+  base href=main_path
 
 = content_for :navbar do
   ul.nav.navbar-nav
-    li: a href="/things" Things
-    li: a href="/things/recommended" Recommendations
-    li: a href="/things/unchecked" Unchecked
-    li: a href="/things/checked" Checked
-    li: a href="/things/new" New thing
+    li: a href=main_path("things") Things
+    li: a href=main_path("things/recommended") Recommendations
+    li: a href=main_path("things/unchecked") Unchecked
+    li: a href=main_path("things/checked") Checked
+    li: a href=main_path("things/new") New thing
 
 div ng-view=true
