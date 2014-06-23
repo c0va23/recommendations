@@ -23,6 +23,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'slim-rails'
 
+gem 'thin'
+
 # Assets
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
