@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     user = User.create_with(name: auth_hash.info.name).find_or_create_by!(facebook_id: auth_hash.uid)
     if user.persisted?
       session[:user_id] = user.id 
-      redirect_to main_path
+      redirect_to root_path
     else
       redirect_to new_user_session_path
     end

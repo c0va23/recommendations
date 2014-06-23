@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get '/main' => 'main#index'
-  root to: redirect('/main')
+  root to: 'main#index'
+  get '/main' => redirect('/')
 
   get '/auth/:provider/callback' => 'user_sessions#create'
   resource :user_session, only: %w[ new destroy ]
