@@ -3,6 +3,7 @@ html
   head
     title Recommendations
     = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
     = yield :head if content_for?(:head)
   body
@@ -10,14 +11,23 @@ html
       .container 
         .navbar-header
           = link_to t('.home'), root_path, class: 'navbar-brand'
-        = yield :navbar if content_for?(:navbar)
-        ul.nav.navbar-nav.navbar-right
-          - if current_user
-            li.navbar-text = current_user.name
-            - if current_user.admin?
-              li = link_to t('.amdin_panel'), rails_admin_path
-            li.navbar-form = button_to user_session_path, method: :delete, class: 'btn btn-danger'
-              = t('.sign_out')
-          - else
-            li = link_to t('.sign_in'), new_user_session_path
+          a.navbar-toggle data-toggle="collapse" href="#navbar-collapse"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+
+        #navbar-collapse.collapse.navbar-collapse
+          = yield :navbar if content_for?(:navbar)
+          ul.nav.navbar-nav.navbar-right
+            - if current_user
+              li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" href="#"
+                  = current_user.name
+                  b.caret
+                ul.dropdown-menu
+                  - if current_user.admin?
+                    li = link_to t('.amdin_panel'), rails_admin_path
+                  li = link_to t('.sign_out'), user_session_path, method: :delete
+            - else
+              li = link_to t('.sign_in'), new_user_session_path
     .container= yield
