@@ -16,8 +16,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -37,6 +35,9 @@ gem 'dotenv-rails'
 
 # Admin
 gem 'rails_admin'
+
+# Api
+gem 'roar-rails'
 
 group :test do
   gem 'rspec-rails', '~> 2.14.0'
