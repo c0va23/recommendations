@@ -1,6 +1,7 @@
 #= require angular
 #= require angular-route
 #= require angular-resource
+#= require websocket_rails/main
 #= require_tree .
 #= require_self
 
@@ -10,6 +11,7 @@ app = angular.module 'RecommendationsApplication', [
   'RecommendationsResources',
   'RecommendationsFilters',
   'RecommendationsDirectives',
+  'RecommendationsProviders',
 ]
 
 routePrefix = => $('base').attr('href')

@@ -39,6 +39,9 @@ gem 'rails_admin'
 # Api
 gem 'roar-rails'
 
+# Websocket
+gem 'websocket-rails'
+
 group :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'guard-rspec'
