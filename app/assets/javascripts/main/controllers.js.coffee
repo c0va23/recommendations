@@ -47,12 +47,20 @@ controllers.controller 'NewThingsController',
   ]
 
 controllers.controller 'CommentsController',
-  [ '$scope', 'Comment', ($scope, Comment) ->
+  [ '$scope', 'Comment', 'dispatcher', ($scope, Comment, dispatcher) ->
     queryParams = thingId: $scope.thingId
-    init = -> 
-      $scope.comments = Comment.query(queryParams)
+    commentsChannelName = "things/#{$scope.thingId}/comments"
+    addComment = (createdComment) ->
+      $scope.$apply -> $scope.comments.push createdComment
+    dispatcher
+      .subscribe commentsChannelName
+      .bind 'new', addComment
+
+    $scope.comments = Comment.query(queryParams)
+    $scope.resetComment = ->
       $scope.newComment = new Comment()
     $scope.saveNewComment = ->
-      Comment.save queryParams, $scope.newComment, init
-    init()
+      Comment.save queryParams, $scope.newComment, $scope.resetComment
+    $scope.$on '$destroy', -> dispatcher.unsubscribe commentsChannelName
+    $scope.resetComment()
   ]
