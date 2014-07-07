@@ -18,6 +18,7 @@ app = angular.module 'RecommendationsApplication', [
   'RecommendationsFilters',
   'RecommendationsDirectives',
   'RecommendationsProviders',
+  'RecommendationsFactories',
 ]
 
 routePrefix = => $('base').attr('href')
@@ -41,6 +42,9 @@ app.config ['$routeProvider', '$locationProvider', '$translateProvider', ($route
     .fallbackLanguage('en')
     .determinePreferredLanguage()
     .useLocalStorage()
+    .useLoader 'TranslationLoader', localePaths: <%= I18n.available_locales.map do |locale|
+      [ locale, asset_path("templates.#{locale}.json") ]
+    end.to_h.to_json %>
 ]
 
 app.run [ '$http', '$rootScope', ($http, $rootScope) -> 
