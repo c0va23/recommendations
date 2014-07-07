@@ -46,21 +46,39 @@ controllers.controller 'NewThingsController',
       $scope.errors_data = null
   ]
 
-controllers.controller 'CommentsController',
-  [ '$scope', 'Comment', 'dispatcher', ($scope, Comment, dispatcher) ->
-    queryParams = thingId: $scope.thingId
-    commentsChannelName = "things/#{$scope.thingId}/comments"
-    addComment = (createdComment) ->
-      $scope.$apply -> $scope.comments.push createdComment
-    dispatcher
-      .subscribe commentsChannelName
-      .bind 'new', addComment
+controllers.controller 'CommentsController', class CommentsController
+  @$inject: [ '$scope', 'Comment', 'dispatcher' ]
 
-    $scope.comments = Comment.query(queryParams)
-    $scope.resetComment = ->
-      $scope.newComment = new Comment()
-    $scope.saveNewComment = ->
-      Comment.save queryParams, $scope.newComment, $scope.resetComment
-    $scope.$on '$destroy', -> dispatcher.unsubscribe commentsChannelName
-    $scope.resetComment()
-  ]
+  constructor: (@$scope, @Comment, @dispatcher) ->
+    @bindScore()
+    @resetComment()
+    @subscribe()
+
+  bindScore: ->
+    @$scope.comments = @Comment.query(@queryParams())
+    @$scope.resetComment = @resetComment
+    @$scope.saveNewComment = @saveNewComment
+    @$scope.$on '$destroy', @unsubscribe
+
+  thingId: => @$scope.thingId
+  queryParams: => thingId: @thingId()
+  commentsChannelName:  => "things/#{@thingId()}/comments"
+
+  subscribe: =>
+    @dispatcher
+      .subscribe @commentsChannelName()
+      .bind 'new', @addComment
+  unsubscribe: => 
+    @dispatcher
+      .unsubscribe @commentsChannelName()
+
+  addComment: (createdComment) =>
+    @$scope.$apply -> 
+      @$scope.comments.push createdComment
+
+  resetComment: =>
+    @$scope.newComment = new @Comment()
+  saveNewComment: =>
+    @Comment.save @queryParams(), @$scope.newComment, @resetComment
+
+
