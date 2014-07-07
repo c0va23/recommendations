@@ -29,5 +29,9 @@ module Recommendations
       provider :facebook, secrets.facebook_key, secrets.facebook_secret, scope: ''
     end
 
+    config.assets.configure do |assets_config|
+      assets_config.register_engine '.slim', Slim::Template
+    end
+
   end
 end
