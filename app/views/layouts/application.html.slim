@@ -17,8 +17,10 @@ html ng-app=@ngApp
             span.icon-bar
 
         #navbar-collapse.collapse.navbar-collapse
-          = yield :navbar if content_for?(:navbar)
+          ul.nav.navbar-nav
+            = yield :navbar if content_for?(:navbar)
           ul.nav.navbar-nav.navbar-right
+            = yield :navbar_right if content_for?(:navbar_right)
             - if current_user
               li.dropdown
                 a.dropdown-toggle.btn.btn-link data-toggle="dropdown"

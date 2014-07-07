@@ -8,11 +8,19 @@
   base href=main_path
 
 = content_for :navbar do
-  ul.nav.navbar-nav
-    li: a href=main_path("things") Things
-    li: a href=main_path("things/recommended") Recommendations
-    li: a href=main_path("things/unchecked") Unchecked
-    li: a href=main_path("things/checked") Checked
-    li: a href=main_path("things/new") New thing
+  li: a href=main_path("things") Things
+  li: a href=main_path("things/recommended") Recommendations
+  li: a href=main_path("things/unchecked") Unchecked
+  li: a href=main_path("things/checked") Checked
+  li: a href=main_path("things/new") New thing
+
+- content_for :navbar_right do
+  li.dropdown ng-controller="TranslationController"
+    a.dropdown-toggle.btn.btn-link data-toggle="dropdown"
+      | {{currentLocale}}
+      b.caret
+    ul.dropdown-menu
+      - I18n.available_locales.each do |locale|
+        li: a ng-click="setLocale('#{locale}')" = locale
 
 div ng-view=true

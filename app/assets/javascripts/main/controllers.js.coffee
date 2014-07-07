@@ -81,4 +81,11 @@ controllers.controller 'CommentsController', class CommentsController
   saveNewComment: =>
     @Comment.save @queryParams(), @$scope.newComment, @resetComment
 
+controllers.controller 'TranslationController', [ '$translate', '$scope', '$rootScope', ($translate, $scope, $rootScope) ->
 
+  $rootScope.$on '$translateChangeSuccess', ->
+    $scope.currentLocale = $translate.use()
+
+  $scope.setLocale = (locale) =>
+    $translate.use(locale)
+]
