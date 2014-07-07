@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
+
 ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -26,6 +28,8 @@ gem 'thin'
 # Assets
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'rails-assets-angular-translate'
+gem 'rails-assets-angular-translate-storage-local'
 
 # Auth
 gem 'omniauth-facebook'

@@ -1,12 +1,18 @@
 #= require angular
 #= require angular-route
 #= require angular-resource
+#= require angular-cookies
+#= require angular-translate
+#= require angular-translate-storage-cookie
+#= require angular-translate-storage-local
 #= require websocket_rails/main
 #= require_tree .
 #= require_self
 
 app = angular.module 'RecommendationsApplication', [
   'ngRoute',
+  'ngCookies',
+  'pascalprecht.translate',
   'RecommendationsControllers',
   'RecommendationsResources',
   'RecommendationsFilters',
@@ -16,7 +22,7 @@ app = angular.module 'RecommendationsApplication', [
 
 routePrefix = => $('base').attr('href')
 
-app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+app.config ['$routeProvider', '$locationProvider', '$translateProvider', ($routeProvider, $locationProvider, $translateProvider) ->
 
   $routeProvider
     .when "#{routePrefix()}/things", controller: 'ThingsController', templateUrl: '<%= asset_path "things/index.html" %>'
@@ -30,6 +36,11 @@ app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
   $locationProvider
     .html5Mode true
     .hashPrefix '!'
+
+  $translateProvider
+    .fallbackLanguage('en')
+    .determinePreferredLanguage()
+    .useLocalStorage()
 ]
 
 app.run [ '$http', '$rootScope', ($http, $rootScope) -> 
