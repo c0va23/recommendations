@@ -33,6 +33,7 @@ module Recommendations
 
     config.assets.configure do |assets_config|
       assets_config.register_engine '.slim', Slim::Template
+      assets_config.register_preprocessor 'application/json', Sprockets::DirectiveProcessor
     end
 
   end
