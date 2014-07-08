@@ -1,5 +1,5 @@
 div ng-controller="CommentsController"
-  h2 Comments
+  h2 translate="widgets.comments.title"
   div ng-repeat="comment in comments"
     p
       strong
@@ -11,10 +11,10 @@ div ng-controller="CommentsController"
     p
       | {{comment.message}}
 
-  h2 New comment
+  h2 translate="widgets.comments.new_comment"
   form.form ng-submit="saveNewComment()"
     .form-group
       textarea.form-control ng-model="newComment.message" required="true"
 
     .form-group
-      button.btn.btn-primary type="submit" Save
+      button.btn.btn-primary type="submit" translate="widgets.comments.add_comment"

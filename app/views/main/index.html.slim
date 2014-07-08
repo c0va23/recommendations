@@ -8,11 +8,11 @@
   base href=main_path
 
 = content_for :navbar do
-  li: a href=main_path("things") Things
-  li: a href=main_path("things/recommended") Recommendations
-  li: a href=main_path("things/unchecked") Unchecked
-  li: a href=main_path("things/checked") Checked
-  li: a href=main_path("things/new") New thing
+  li: a href=main_path("things") translate="things.index.title"
+  li: a href=main_path("things/recommended") translate="things.recommended.title"
+  li: a href=main_path("things/unchecked") translate="things.unchecked.title"
+  li: a href=main_path("things/checked") translate="things.checked.title"
+  li: a href=main_path("things/new") translate="things.new.title"
 
 - content_for :navbar_right do
   li.dropdown ng-controller="TranslationController"

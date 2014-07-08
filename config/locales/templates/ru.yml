@@ -1,0 +1,29 @@
+ru:
+  templates:
+    thing:
+      name: 'Название'
+      tags: 'Теги'
+    things:
+      show:
+        title: 'Вещь "{{name}}"'
+      index:
+        title: 'Вещи'
+      new:
+        title: 'Новая вещь'
+        save: 'Сохранить'
+        reset: 'Сбросить'
+      recommended:
+        title: 'Рекомендованные вещи'
+      checked:
+        title: 'Проверенные вещи'
+      unchecked:
+        title: 'Непроверенные вещи'
+    widgets:
+      comments:
+        title: 'Комментарии'
+        no_comments: 'Нет комментариев'
+        new_comment: 'Новый комментарий'
+        add_comment: 'Добавить комментарий'
+      score:
+        like: 'Нравится'
+        dislike: 'Не нравится'

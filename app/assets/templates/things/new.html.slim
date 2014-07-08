@@ -1,4 +1,4 @@
-h1 New thing
+h1 translate="things.new.title"
 
 form.form ng-submit="save()"
   ul.alert.alert-danger ng-repeat="(field, errors) in errors_data"
@@ -8,9 +8,9 @@ form.form ng-submit="save()"
       |  {{error}}
 
   .form-group
-    label for="thing_name" Name
+    label for="thing_name" translate="thing.name"
     input.form-control id="thing_name" ng-model="thing.name"
 
   .form-group
-    button.btn.btn-primary type="submit" Save
-    button.btn.btn-default type="reset" ng-click="reset()" Reset
+    button.btn.btn-primary type="submit" translate="things.new.save"
+    button.btn.btn-default type="reset" ng-click="reset()" translate="things.new.reset"

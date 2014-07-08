@@ -1,8 +1,8 @@
 article ng-controller="ScoreWidgetController"
     button class="btn btn-{{ score.value > 0 ? 'success' : 'default' }}" ng-click="setValue(1)"
       span.glyphicon.glyphicon-thumbs-up
-      |  Like
+      | &nbsp;{{ "widgets.score.like" | translate }}
 
     button class="btn btn-{{ score.value < 0 ? 'danger' : 'default'}}" ng-click="setValue(-1)"
       span.glyphicon.glyphicon-thumbs-down
-      |  Dislike
+      | &nbsp;{{ "widgets.score.dislike" | translate }}

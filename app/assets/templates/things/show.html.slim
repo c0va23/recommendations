@@ -1,8 +1,8 @@
-h1 Thing "{{thing.name}}" \#{{thing.id}}
+h1 translate="things.show.title" translate-value-name="{{thing.name}}"
 
 div wg-twitter-button=true label="{{thing.name}}"
 
-h2 Tags
+h2 translate="thing.tags"
 ul
   li ng-repeat="tag in thing.tags" {{tag}}
 

@@ -1,0 +1,29 @@
+en:
+  templates:
+    thing:
+      name: 'Name'
+      tags: 'Tags'
+    things:
+      show:
+        title: 'Thing "{{name}}"'
+      index:
+        title: 'Things'
+      new:
+        title: 'New thing'
+        save: 'Save'
+        reset: 'Reset'
+      recommended:
+        title: 'Recommended things'
+      checked:
+        title: 'Checked things'
+      unchecked:
+        title: 'Unchecked things'
+    widgets:
+      comments:
+        title: 'Comments'
+        no_comments: "No comments"
+        new_comment: 'New comment'
+        add_comment: 'Add comment'
+      score:
+        like: 'Like'
+        dislike: 'Dislike'
