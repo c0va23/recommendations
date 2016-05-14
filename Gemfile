@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-ruby '2.1.2'
+ruby File.read('.ruby-version').strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.1.1'
@@ -69,4 +69,3 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
