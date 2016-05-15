@@ -6,4 +6,4 @@ angular
 
   constructor: (@$scope, @$routeParams, @Thing) ->
     @$scope.thingId = @$routeParams.thingId
-    @$scope.thing = @Thing.get(thingId: $scope.thingId)
+    @$scope.thing = @Thing.get(thingId: @$scope.thingId)
