@@ -2,13 +2,14 @@ doctype html
 html ng-app=@ngApp
   head
     title Recommendations
+    script= render 'shared/twitter_wjs.js'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application', media: 'all'
     = csrf_meta_tags
     = yield :head if content_for?(:head)
   body
     nav.navbar.navbar-default
-      .container 
+      .container
         .navbar-header
           = link_to t('.home'), root_path, class: 'navbar-brand'
           a.navbar-toggle data-toggle="collapse" href="#navbar-collapse"
