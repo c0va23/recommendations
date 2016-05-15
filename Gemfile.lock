@@ -294,8 +294,8 @@ DEPENDENCIES
   omniauth-facebook
   pg
   rails (~> 4.1.1)
-  rails-assets-angular-translate
-  rails-assets-angular-translate-storage-local
+  rails-assets-angular-translate!
+  rails-assets-angular-translate-storage-local!
   rails_12factor
   rails_admin
   roar-rails

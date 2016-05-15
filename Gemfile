@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 ruby File.read('.ruby-version').strip
 
@@ -28,8 +27,11 @@ gem 'thin'
 # Assets
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
-gem 'rails-assets-angular-translate'
-gem 'rails-assets-angular-translate-storage-local'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular-translate'
+  gem 'rails-assets-angular-translate-storage-local'
+end
 
 # Auth
 gem 'omniauth-facebook'
